@@ -1,8 +1,27 @@
 spring:
   profiles:
     active: dev
+  http:
+    log-request-details: true
 
 service:
   impl:
     id: 12
     name: dsadsadsa
+
+posts:
+  service:
+    url: https://jsonplaceholder.typicode.com
+    posts: /posts
+    comments: /comments
+    timeout: 3000
+
+logging:
+  level:
+    org:
+      springframework:
+        web:
+          reactive:
+            function:
+              client:
+                ExchangeFunctions: TRACE
