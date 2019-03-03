@@ -12,5 +12,21 @@ pipeline {
                 }
             }
         }
+        stage('Test') {
+            steps {
+                script {
+                    if (isUnix()) {
+                        sh './gradlew test'
+                    } else {
+                        bat 'gradlew.bat test'
+                    }
+                }
+            }
+            post {
+                always {
+                    junit 'build/test-results/test/*.xml'
+                }
+            }
+        }
     }
 }
