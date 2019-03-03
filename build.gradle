@@ -55,3 +55,24 @@ compileTestKotlin {
         jvmTarget = '1.8'
     }
 }
+
+task resolveDependencies {
+    setDescription "Resolves all projects dependencies from the repository."
+    setGroup "Build Server"
+
+    doLast {
+        rootProject.allprojects { project ->
+            project.buildscript.configurations.forEach { configuration ->
+                if (configuration.canBeResolved) {
+                    configuration.resolve()
+                }
+            }
+
+            project.configurations.forEach { configuration ->
+                if (configuration.canBeResolved) {
+                    configuration.resolve()
+                }
+            }
+        }
+    }
+}
