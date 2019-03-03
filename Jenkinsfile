@@ -28,5 +28,14 @@ pipeline {
                 }
             }
         }
+        stage('Deploy - Dev'){
+            when{
+                branch 'dev'
+            }
+            steps {
+                sh './gradlew run'
+                input message: 'Finished using the web site? (Click "Proceed" to continue)'
+            }
+        }
     }
 }
