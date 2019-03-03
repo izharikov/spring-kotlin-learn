@@ -6,7 +6,7 @@ import org.springframework.web.context.annotation.RequestScope
 import javax.annotation.PreDestroy
 
 @Component
-@RequestScope()
+//@RequestScope()
 class RequestScopeBean{
     var logger = LoggerFactory.getLogger(RequestScopeBean::class.java)
 

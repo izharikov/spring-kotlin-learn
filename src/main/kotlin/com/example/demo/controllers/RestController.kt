@@ -20,14 +20,10 @@ class RestController @Autowired constructor(private val service: Service) {
     lateinit var anotherService: Service;
 
     @Autowired
-    lateinit var requestObject: RequestScopeBean;
-
-    @Autowired
     lateinit var config: EnvSpecificConfiguration;
 
     @GetMapping("/model")
     fun model(): SomeModel {
-        requestObject.print()
         return service.getModel()
     }
 
