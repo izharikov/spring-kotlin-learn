@@ -8,8 +8,3 @@ data class SomeModel(val name: String, val id: Int)
 
 data class InputModel constructor(val id: String = "", @field:NotNull @field:NotBlank val name: String?) {
 }
-
-fun main(args: Array<String>){
-    val a: Double = 1.0;
-    println(0.0 / 0.0)
-}

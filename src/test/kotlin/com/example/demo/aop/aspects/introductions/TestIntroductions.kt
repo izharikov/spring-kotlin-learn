@@ -30,8 +30,5 @@ class IntroductionTest {
     @Test
     fun shoutTest() {
         assertNotNull(sampleA)
-        sampleA!!.doSomething()
-        assertTrue(sampleA is SampleB)
-        (sampleA as SampleB).doB()
     }
 }
