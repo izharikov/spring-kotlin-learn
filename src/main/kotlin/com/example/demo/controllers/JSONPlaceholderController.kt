@@ -5,6 +5,7 @@ import com.example.demo.models.Greeting
 import com.example.demo.models.Post
 import com.example.demo.services.PostsService
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.beans.factory.annotation.Qualifier
 import org.springframework.http.MediaType
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping
@@ -23,9 +24,7 @@ import java.time.Duration
  * @author Ihar Zharykau
  */
 
-@RestController
-@RequestMapping("/json")
-class JSONPlaceholderController @Autowired constructor(val postsService: PostsService) {
+abstract class JSONPlaceholderController(private val postsService: PostsService) {
 
 
     @GetMapping("/posts")
@@ -50,3 +49,11 @@ class JSONPlaceholderController @Autowired constructor(val postsService: PostsSe
         return Flux.zip(greetingFlux, durationFlux).map { it.t1 }
     }
 }
+
+//@RestController
+//@RequestMapping("/wcl")
+//class WebClientController @Autowired constructor(postsService: PostsService) : JSONPlaceholderController(postsService)
+//
+//@RestController
+//@RequestMapping("/ap")
+//class ApacheHttpClientController @Autowired constructor(@Qualifier("postServiceApacheHttpClient") postsService: PostsService) : JSONPlaceholderController(postsService)
